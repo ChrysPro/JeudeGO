@@ -18,7 +18,13 @@ public class PlateauJeu {
     ArrayList<String> plateau;
     String b;
     String n;
+    /**
+     *
+     */
     public Scanner S;
+    /**
+     *
+     */
     public String reponse;
 
     /**
@@ -119,7 +125,7 @@ public class PlateauJeu {
 
     /**
      * Vérifie si un groupe de pion de couleur couleur est entouré
-     *
+     * Empeche de jouer à une position qui vient d'être prise -> Pris
      * @param plateau
      * @param i
      * @param j
@@ -425,6 +431,9 @@ public class PlateauJeu {
         b = "";
     }
     
+    /**
+     *Méthode pour jouer à 2 joueurs
+     */
     public void partie() {
         int joueur=1;
         String i;
