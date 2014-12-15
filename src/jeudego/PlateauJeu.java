@@ -409,7 +409,7 @@ public class PlateauJeu {
         this.verifierPriseAux(plateau, i, j, couleur);
         for (int k = 0; k < plateau.size(); k++) {
             if ("En attente".equals(plateau.get(k))) {
-                plateau.set(k, "Libre");
+                plateau.set(k, "Pris");
             }
             if ("Non Pris".equals(plateau.get(k))) {
                 plateau.set(k, couleur);
