@@ -14,6 +14,12 @@ public class JeudeGo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+      PlateauJeu plateau= new PlateauJeu(8);
+      plateau.setposition(5, 0, "Blanc");
+      plateau.afficher();
+      plateau.setposition(3, 0, "Noir");
+      plateau.afficher();
+      plateau.setposition(4, 5, "Blanc");
+      plateau.afficher();
     }
 }
