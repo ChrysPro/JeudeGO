@@ -395,8 +395,11 @@ public class PlateauJeu {
     public void verifierPrise(ArrayList<String> plateau, int i, int j, String couleur) {
         this.verifierPriseAux(plateau, i, j, couleur);
         for (int k = 0; k < plateau.size(); k++) {
-            if ("En attente".equals(plateau.get(k))) {
+            if ("Pris".equals(plateau.get(k))) {
                 plateau.set(k, "Libre");
+            } 
+            if ("En attente".equals(plateau.get(k))) {
+                plateau.set(k, "Pris");
             }
             if ("Non Pris".equals(plateau.get(k))) {
                 plateau.set(k, couleur);
