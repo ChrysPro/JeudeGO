@@ -160,8 +160,7 @@ public class PlateauJeu {
                             verifierPriseAux(i + 1, j, couleur);
                         }
                     }
-                } // On verifie la prise aux coins (2eme coin)
-                else if (j == hauteur - 1) {
+                } else if (j == hauteur - 1) { // On verifie la prise aux coins (2eme coin)
                     if ((!plateau.get(i * hauteur + j - 1).equals("Libre") && !plateau.get(i * hauteur + j - 1).equals("Pris") && !plateau.get(i * hauteur + j - 1).equals("Non Pris"))
                             && (!plateau.get((i + 1) * hauteur + j).equals("Libre") && !plateau.get((i + 1) * hauteur + j).equals("Pris") && !plateau.get((i + 1) * hauteur + j).equals("Non Pris"))) {
                         plateau.set(i * hauteur + j, "En attente");
@@ -237,8 +236,7 @@ public class PlateauJeu {
                             verifierPriseAux(i - 1, j, couleur);
                         }
                     }
-                } // On verifie la prise aux coins (4eme coin)
-                else if (j == hauteur - 1) {
+                } else if (j == hauteur - 1) { // On verifie la prise aux coins (4eme coin)
                     if ((!plateau.get(i * hauteur + j - 1).equals("Libre") && !plateau.get(i * hauteur + j - 1).equals("Non Pris"))
                             && (!plateau.get((i - 1) * hauteur + j).equals("Libre") && !plateau.get((i - 1) * hauteur + j).equals("Non Pris"))) {
                         plateau.set(i * hauteur + j, "En attente");
@@ -348,8 +346,7 @@ public class PlateauJeu {
                         verifierPriseAux(i - 1, j, couleur);
                     }
                 }
-            } // On verifie la prise au centre du plateau
-            else {
+            } else { // On verifie la prise au centre du plateau
                 if ((!plateau.get(i * hauteur + j - 1).equals("Libre") && !plateau.get(i * hauteur + j - 1).equals("Pris") && !plateau.get(i * hauteur + j - 1).equals("Non Pris"))
                         && (!plateau.get((i + 1) * hauteur + j).equals("Libre") && !plateau.get((i + 1) * hauteur + j).equals("Pris") && !plateau.get((i + 1) * hauteur + j).equals("Non Pris"))
                         && (!plateau.get((i - 1) * hauteur + j).equals("Libre") && !plateau.get((i - 1) * hauteur + j).equals("Pris") && !plateau.get((i - 1) * hauteur + j).equals("Non Pris"))
