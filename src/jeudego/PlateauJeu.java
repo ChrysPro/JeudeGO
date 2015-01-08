@@ -134,7 +134,7 @@ public class PlateauJeu {
      * @param j
      * @param couleur
      */
-    public void verifierPriseAux(ArrayList<String> plateau, int i, int j, String couleur) {
+    public void verifierPriseAux(int i, int j, String couleur) {
 // On verifie d'abord la prise sur les côtés du plateau
         if (plateau.get(i * hauteur + j).equals(couleur) || plateau.get(i * hauteur + j).equals("En attente") || plateau.get(i * hauteur + j).equals("Non Pris")) {
             if (i == 0) {
@@ -144,20 +144,20 @@ public class PlateauJeu {
                             && (!plateau.get((i + 1) * hauteur + j).equals("Libre") && !plateau.get((i + 1) * hauteur + j).equals("Non Pris"))) {
                         plateau.set(i * hauteur + j, "En attente");
                         if (plateau.get(i * hauteur + j + 1).equals(couleur)) {
-                            verifierPriseAux(plateau, i, j + 1, couleur);
+                            verifierPriseAux(i, j + 1, couleur);
                         }
                         if (plateau.get((i + 1) * hauteur + j).equals(couleur)) {
-                            verifierPriseAux(plateau, i + 1, j, couleur);
+                            verifierPriseAux(i + 1, j, couleur);
                         }
                     }
                     if (plateau.get(i * hauteur + j + 1).equals("Libre") || plateau.get((i + 1) * hauteur + j).equals("Libre")
                             || plateau.get(i * hauteur + j + 1).equals("Non Pris") || plateau.get((i + 1) * hauteur + j).equals("Non Pris")) {
                         plateau.set(i * hauteur + j, "Non Pris");
                         if (plateau.get(i * hauteur + j + 1).equals("En attente")) {
-                            verifierPriseAux(plateau, i, j + 1, couleur);
+                            verifierPriseAux(i, j + 1, couleur);
                         }
                         if (plateau.get((i + 1) * hauteur + j).equals("En attente")) {
-                            verifierPriseAux(plateau, i + 1, j, couleur);
+                            verifierPriseAux(i + 1, j, couleur);
                         }
                     }
                 } // On verifie la prise aux coins (2eme coin)
@@ -166,10 +166,10 @@ public class PlateauJeu {
                             && (!plateau.get((i + 1) * hauteur + j).equals("Libre") && !plateau.get((i + 1) * hauteur + j).equals("Pris") && !plateau.get((i + 1) * hauteur + j).equals("Non Pris"))) {
                         plateau.set(i * hauteur + j, "En attente");
                         if (plateau.get(i * hauteur + j - 1).equals(couleur)) {
-                            verifierPriseAux(plateau, i, j - 1, couleur);
+                            verifierPriseAux(i, j - 1, couleur);
                         }
                         if (plateau.get((i + 1) * hauteur + j).equals(couleur)) {
-                            verifierPriseAux(plateau, i + 1, j, couleur);
+                            verifierPriseAux(i + 1, j, couleur);
                         }
                     }
                     if (plateau.get(i * hauteur + j - 1).equals("Libre") || plateau.get((i + 1) * hauteur + j).equals("Libre")
@@ -177,10 +177,10 @@ public class PlateauJeu {
                             || plateau.get(i * hauteur + j - 1).equals("Non Pris") || plateau.get((i + 1) * hauteur + j).equals("Non Pris")) {
                         plateau.set(i * hauteur + j, "Non Pris");
                         if (plateau.get(i * hauteur + j - 1).equals("En attente")) {
-                            verifierPriseAux(plateau, i, j - 1, couleur);
+                            verifierPriseAux(i, j - 1, couleur);
                         }
                         if (plateau.get((i + 1) * hauteur + j).equals("En attente")) {
-                            verifierPriseAux(plateau, i + 1, j, couleur);
+                            verifierPriseAux(i + 1, j, couleur);
                         }
                     }
                 } else {
@@ -189,13 +189,13 @@ public class PlateauJeu {
                             && (!plateau.get(i * hauteur + j + 1).equals("Libre") && !plateau.get(i * hauteur + j + 1).equals("Non Pris"))) {
                         plateau.set(i * hauteur + j, "En attente");
                         if (plateau.get(i * hauteur + j - 1).equals(couleur)) {
-                            verifierPriseAux(plateau, i, j - 1, couleur);
+                            verifierPriseAux(i, j - 1, couleur);
                         }
                         if (plateau.get((i + 1) * hauteur + j).equals(couleur)) {
-                            verifierPriseAux(plateau, i + 1, j, couleur);
+                            verifierPriseAux(i + 1, j, couleur);
                         }
                         if (plateau.get(i * hauteur + j + 1).equals(couleur)) {
-                            verifierPriseAux(plateau, i, j + 1, couleur);
+                            verifierPriseAux(i, j + 1, couleur);
                         }
                     }
                     if (plateau.get(i * hauteur + j - 1).equals("Libre") || plateau.get((i + 1) * hauteur + j).equals("Libre")
@@ -204,13 +204,13 @@ public class PlateauJeu {
                             || plateau.get(i * hauteur + j + 1).equals("Libre") || plateau.get(i * hauteur + j + 1).equals("Non Pris")) {
                         plateau.set(i * hauteur + j, "Non Pris");
                         if (plateau.get(i * hauteur + j - 1).equals("En attente")) {
-                            verifierPriseAux(plateau, i, j - 1, couleur);
+                            verifierPriseAux(i, j - 1, couleur);
                         }
                         if (plateau.get((i + 1) * hauteur + j).equals("En attente")) {
-                            verifierPriseAux(plateau, i + 1, j, couleur);
+                            verifierPriseAux(i + 1, j, couleur);
                         }
                         if (plateau.get(i * hauteur + j + 1).equals("En attente")) {
-                            verifierPriseAux(plateau, i, j + 1, couleur);
+                            verifierPriseAux(i, j + 1, couleur);
                         }
                     }
                 }
@@ -221,20 +221,20 @@ public class PlateauJeu {
                             && (!plateau.get((i - 1) * hauteur + j).equals("Libre") && !plateau.get((i - 1) * hauteur + j).equals("Pris") && !plateau.get((i - 1) * hauteur + j).equals("Non Pris"))) {
                         plateau.set(i * hauteur + j, "En attente");
                         if (plateau.get(i * hauteur + j + 1).equals(couleur)) {
-                            verifierPriseAux(plateau, i, j + 1, couleur);
+                            verifierPriseAux(i, j + 1, couleur);
                         }
                         if (plateau.get((i - 1) * hauteur + j).equals(couleur)) {
-                            verifierPriseAux(plateau, i - 1, j, couleur);
+                            verifierPriseAux(i - 1, j, couleur);
                         }
                     }
                     if (plateau.get(i * hauteur + j + 1).equals("Libre") || plateau.get((i - 1) * hauteur + j).equals("Libre")
                             || plateau.get(i * hauteur + j + 1).equals("Non Pris") || plateau.get((i - 1) * hauteur + j).equals("Non Pris")) {
                         plateau.set(i * hauteur + j, "Non Pris");
                         if (plateau.get(i * hauteur + j + 1).equals("En attente")) {
-                            verifierPriseAux(plateau, i, j + 1, couleur);
+                            verifierPriseAux(i, j + 1, couleur);
                         }
                         if (plateau.get((i - 1) * hauteur + j).equals("En attente")) {
-                            verifierPriseAux(plateau, i - 1, j, couleur);
+                            verifierPriseAux(i - 1, j, couleur);
                         }
                     }
                 } // On verifie la prise aux coins (4eme coin)
@@ -243,20 +243,20 @@ public class PlateauJeu {
                             && (!plateau.get((i - 1) * hauteur + j).equals("Libre") && !plateau.get((i - 1) * hauteur + j).equals("Non Pris"))) {
                         plateau.set(i * hauteur + j, "En attente");
                         if (plateau.get(i * hauteur + j - 1).equals(couleur)) {
-                            verifierPriseAux(plateau, i, j - 1, couleur);
+                            verifierPriseAux(i, j - 1, couleur);
                         }
                         if (plateau.get((i - 1) * hauteur + j).equals(couleur)) {
-                            verifierPriseAux(plateau, i - 1, j, couleur);
+                            verifierPriseAux(i - 1, j, couleur);
                         }
                     }
                     if (plateau.get(i * hauteur + j - 1).equals("Libre") || plateau.get((i - 1) * hauteur + j).equals("Libre")
                             || plateau.get(i * hauteur + j - 1).equals("Non Pris") || plateau.get((i - 1) * hauteur + j).equals("Non Pris")) {
                         plateau.set(i * hauteur + j, "Non Pris");
                         if (plateau.get(i * hauteur + j - 1).equals("En attente")) {
-                            verifierPriseAux(plateau, i, j - 1, couleur);
+                            verifierPriseAux(i, j - 1, couleur);
                         }
                         if (plateau.get((i - 1) * hauteur + j).equals("En attente")) {
-                            verifierPriseAux(plateau, i - 1, j, couleur);
+                            verifierPriseAux(i - 1, j, couleur);
                         }
                     }
                 } else {
@@ -265,13 +265,13 @@ public class PlateauJeu {
                             && (!plateau.get(i * hauteur + j + 1).equals("Libre") && !plateau.get(i * hauteur + j + 1).equals("Pris") && !plateau.get(i * hauteur + j + 1).equals("Non Pris"))) {
                         plateau.set(i * hauteur + j, "En attente");
                         if (plateau.get(i * hauteur + j - 1).equals(couleur)) {
-                            verifierPriseAux(plateau, i, j - 1, couleur);
+                            verifierPriseAux(i, j - 1, couleur);
                         }
                         if (plateau.get((i - 1) * hauteur + j).equals(couleur)) {
-                            verifierPriseAux(plateau, i - 1, j, couleur);
+                            verifierPriseAux(i - 1, j, couleur);
                         }
                         if (plateau.get(i * hauteur + j + 1).equals(couleur)) {
-                            verifierPriseAux(plateau, i, j + 1, couleur);
+                            verifierPriseAux(i, j + 1, couleur);
                         }
                     }
                     if (plateau.get(i * hauteur + j - 1).equals("Libre") || plateau.get((i - 1) * hauteur + j).equals("Libre")
@@ -279,13 +279,13 @@ public class PlateauJeu {
                             || plateau.get(i * hauteur + j + 1).equals("Libre") || plateau.get(i * hauteur + j + 1).equals("Non Pris")) {
                         plateau.set(i * hauteur + j, "Non Pris");
                         if (plateau.get(i * hauteur + j - 1).equals("En attente")) {
-                            verifierPriseAux(plateau, i, j - 1, couleur);
+                            verifierPriseAux(i, j - 1, couleur);
                         }
                         if (plateau.get((i - 1) * hauteur + j).equals("En attente")) {
-                            verifierPriseAux(plateau, i - 1, j, couleur);
+                            verifierPriseAux(i - 1, j, couleur);
                         }
                         if (plateau.get(i * hauteur + j + 1).equals("En attente")) {
-                            verifierPriseAux(plateau, i, j + 1, couleur);
+                            verifierPriseAux(i, j + 1, couleur);
                         }
                     }
                 }
@@ -295,13 +295,13 @@ public class PlateauJeu {
                         && (!plateau.get((i - 1) * hauteur + j).equals("Libre") && !plateau.get((i - 1) * hauteur + j).equals("Pris") && !plateau.get((i - 1) * hauteur + j).equals("Non Pris"))) {
                     plateau.set(i * hauteur + j, "En attente");
                     if (plateau.get(i * hauteur + j + 1).equals(couleur)) {
-                        verifierPriseAux(plateau, i, j + 1, couleur);
+                        verifierPriseAux(i, j + 1, couleur);
                     }
                     if (plateau.get((i + 1) * hauteur + j).equals(couleur)) {
-                        verifierPriseAux(plateau, i + 1, j, couleur);
+                        verifierPriseAux(i + 1, j, couleur);
                     }
                     if (plateau.get((i - 1) * hauteur + j).equals(couleur)) {
-                        verifierPriseAux(plateau, i - 1, j, couleur);
+                        verifierPriseAux(i - 1, j, couleur);
                     }
                 }
                 if (plateau.get(i * hauteur + j + 1).equals("Libre") || plateau.get((i + 1) * hauteur + j).equals("Libre")
@@ -309,13 +309,13 @@ public class PlateauJeu {
                         || plateau.get((i - 1) * hauteur + j).equals("Non Pris") || plateau.get((i - 1) * hauteur + j).equals("Libre") || plateau.get((i - 1) * hauteur + j).equals("Pris")) {
                     plateau.set(i * hauteur + j, "Non Pris");
                     if (plateau.get(i * hauteur + j + 1).equals("En attente")) {
-                        verifierPriseAux(plateau, i, j + 1, couleur);
+                        verifierPriseAux(i, j + 1, couleur);
                     }
                     if (plateau.get((i + 1) * hauteur + j).equals("En attente")) {
-                        verifierPriseAux(plateau, i + 1, j, couleur);
+                        verifierPriseAux(i + 1, j, couleur);
                     }
                     if (plateau.get((i - 1) * hauteur + j).equals("En attente")) {
-                        verifierPriseAux(plateau, i - 1, j, couleur);
+                        verifierPriseAux(i - 1, j, couleur);
                     }
                 }
             } else if (j == hauteur - 1) {
@@ -324,13 +324,13 @@ public class PlateauJeu {
                         && (!plateau.get((i - 1) * hauteur + j).equals("Libre") && !plateau.get((i - 1) * hauteur + j).equals("Non Pris"))) {
                     plateau.set(i * hauteur + j, "En attente");
                     if (plateau.get(i * hauteur + j - 1).equals(couleur)) {
-                        verifierPriseAux(plateau, i, j - 1, couleur);
+                        verifierPriseAux(i, j - 1, couleur);
                     }
                     if (plateau.get((i + 1) * hauteur + j).equals(couleur)) {
-                        verifierPriseAux(plateau, i + 1, j, couleur);
+                        verifierPriseAux(i + 1, j, couleur);
                     }
                     if (plateau.get((i - 1) * hauteur + j).equals(couleur)) {
-                        verifierPriseAux(plateau, i - 1, j, couleur);
+                        verifierPriseAux(i - 1, j, couleur);
                     }
                 }
                 if (plateau.get(i * hauteur + j - 1).equals("Libre") || plateau.get((i + 1) * hauteur + j).equals("Libre")
@@ -339,13 +339,13 @@ public class PlateauJeu {
                         || plateau.get((i - 1) * hauteur + j).equals("Libre") || plateau.get((i - 1) * hauteur + j).equals("Non Pris")) {
                     plateau.set(i * hauteur + j, "Non Pris");
                     if (plateau.get(i * hauteur + j - 1).equals("En attente")) {
-                        verifierPriseAux(plateau, i, j - 1, couleur);
+                        verifierPriseAux(i, j - 1, couleur);
                     }
                     if (plateau.get((i + 1) * hauteur + j).equals("En attente")) {
-                        verifierPriseAux(plateau, i + 1, j, couleur);
+                        verifierPriseAux(i + 1, j, couleur);
                     }
                     if (plateau.get((i - 1) * hauteur + j).equals("En attente")) {
-                        verifierPriseAux(plateau, i - 1, j, couleur);
+                        verifierPriseAux(i - 1, j, couleur);
                     }
                 }
             } // On verifie la prise au centre du plateau
@@ -356,16 +356,16 @@ public class PlateauJeu {
                         && (!plateau.get(i * hauteur + j + 1).equals("Libre") && !plateau.get(i * hauteur + j + 1).equals("Pris") && !plateau.get(i * hauteur + j + 1).equals("Non Pris"))) {
                     plateau.set(i * hauteur + j, "En attente");
                     if (plateau.get(i * hauteur + j - 1).equals(couleur)) {
-                        verifierPriseAux(plateau, i, j - 1, couleur);
+                        verifierPriseAux(i, j - 1, couleur);
                     }
                     if (plateau.get((i + 1) * hauteur + j).equals(couleur)) {
-                        verifierPriseAux(plateau, i + 1, j, couleur);
+                        verifierPriseAux(i + 1, j, couleur);
                     }
                     if (plateau.get((i - 1) * hauteur + j).equals(couleur)) {
-                        verifierPriseAux(plateau, i - 1, j, couleur);
+                        verifierPriseAux(i - 1, j, couleur);
                     }
                     if (plateau.get(i * hauteur + j + 1).equals(couleur)) {
-                        verifierPriseAux(plateau, i, j + 1, couleur);
+                        verifierPriseAux(i, j + 1, couleur);
                     }
                 }
                 if (plateau.get(i * hauteur + j - 1).equals("Libre") || plateau.get((i + 1) * hauteur + j).equals("Libre")
@@ -374,16 +374,16 @@ public class PlateauJeu {
                         || plateau.get(i * hauteur + j + 1).equals("Libre") || plateau.get(i * hauteur + j + 1).equals("Non Pris")) {
                     plateau.set(i * hauteur + j, "Non Pris");
                     if (plateau.get(i * hauteur + j - 1).equals("En attente")) {
-                        verifierPriseAux(plateau, i, j - 1, couleur);
+                        verifierPriseAux(i, j - 1, couleur);
                     }
                     if (plateau.get((i + 1) * hauteur + j).equals("En attente")) {
-                        verifierPriseAux(plateau, i + 1, j, couleur);
+                        verifierPriseAux(i + 1, j, couleur);
                     }
                     if (plateau.get((i - 1) * hauteur + j).equals("En attente")) {
-                        verifierPriseAux(plateau, i - 1, j, couleur);
+                        verifierPriseAux(i - 1, j, couleur);
                     }
                     if (plateau.get(i * hauteur + j + 1).equals("En attente")) {
-                        verifierPriseAux(plateau, i, j + 1, couleur);
+                        verifierPriseAux(i, j + 1, couleur);
                     }
                 }
             }
@@ -399,7 +399,7 @@ public class PlateauJeu {
      * @param couleur
      */
     public void verifierPrise(ArrayList<String> plateau, int i, int j, String couleur) {
-        this.verifierPriseAux(plateau, i, j, couleur);
+        this.verifierPriseAux(i, j, couleur);
         for (int k = 0; k < plateau.size(); k++) {
             
             if ("En attente".equals(plateau.get(k))) {
