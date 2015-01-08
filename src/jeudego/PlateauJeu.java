@@ -5,7 +5,6 @@
 package jeudego;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.Scanner;
 
 /**
@@ -14,18 +13,18 @@ import java.util.Scanner;
  */
 public class PlateauJeu {
 
-    int hauteur;
-    ArrayList<String> plateau;
-    String b;
-    String n;
+    private int hauteur;
+    private ArrayList<String> plateau;
+    private String b;
+    private String n;
     /**
      *
      */
-    public Scanner S;
+    private Scanner S;
     /**
      *
      */
-    public String reponse;
+    private String reponse;
 
     /**
      * Constructeur
