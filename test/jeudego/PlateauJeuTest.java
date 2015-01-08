@@ -88,11 +88,11 @@ public class PlateauJeuTest {
         int j = 0;
         String couleur = "";
         PlateauJeu instance = new PlateauJeu(10);
-        instance.setposition(0, 0, "Blanc");
         ArrayList<String> expResult= new ArrayList<String>();
         for (int k = 0; k < (10 * 10); k++) {
             expResult.add("Libre");
         }
+        instance.setposition(0, 0, "Blanc");
         expResult.set(0, "Blanc");
         assertEquals(expResult,instance.getPlateau());
         instance.setposition(1, 0, "Noir ");
@@ -112,6 +112,58 @@ public class PlateauJeuTest {
         expResult.set(11, "Blanc");
         expResult.set(20, "Blanc");
         assertEquals(expResult,instance.getPlateau());
+        instance.setposition(9, 9, "Blanc");
+        expResult.set(99, "Blanc");
+        assertEquals(expResult,instance.getPlateau());
+        instance.setposition(8, 9, "Noir ");
+        instance.setposition(9, 8, "Noir ");
+        expResult.set(99, "Pris");
+        expResult.set(98, "Noir ");
+        expResult.set(89, "Noir ");
+        assertEquals(expResult,instance.getPlateau());
+        instance.setposition(7, 9, "Blanc");
+        instance.setposition(8, 8, "Blanc");
+        instance.setposition(9, 7, "Blanc");
+        instance.setposition(9, 9, "Blanc");
+        expResult.set(99, "Blanc");
+        expResult.set(98, "Pris");
+        expResult.set(89, "Pris");
+        expResult.set(97, "Blanc");
+        expResult.set(88, "Blanc");
+        expResult.set(79, "Blanc");
+        assertEquals(expResult,instance.getPlateau());
+        instance.setposition(0, 9, "Blanc");
+        expResult.set(9, "Blanc");
+        assertEquals(expResult,instance.getPlateau());
+        instance.setposition(0, 8, "Noir ");
+        instance.setposition(1, 9, "Noir ");
+        expResult.set(9, "Pris");
+        expResult.set(8, "Noir ");
+        expResult.set(19, "Noir ");
+        assertEquals(expResult,instance.getPlateau());
+        instance.setposition(9, 0, "Blanc");
+        expResult.set(90, "Blanc");
+        assertEquals(expResult,instance.getPlateau());
+        instance.setposition(8, 0, "Noir ");
+        instance.setposition(9, 1, "Noir ");
+        expResult.set(90, "Pris");
+        expResult.set(80, "Noir ");
+        expResult.set(91, "Noir ");
+        assertEquals(expResult,instance.getPlateau());
+        instance.setposition(5, 5, "Blanc");
+        expResult.set(55, "Blanc");
+        assertEquals(expResult,instance.getPlateau());
+        instance.setposition(5, 4, "Noir ");
+        instance.setposition(5, 6, "Noir ");
+        instance.setposition(4, 5, "Noir ");
+        instance.setposition(6, 5, "Noir ");
+        expResult.set(55, "Pris");
+        expResult.set(54, "Noir ");
+        expResult.set(56, "Noir ");
+        expResult.set(65, "Noir ");
+        expResult.set(45, "Noir ");
+        assertEquals(expResult,instance.getPlateau());
+        
     }
 
     /**
@@ -122,17 +174,27 @@ public class PlateauJeuTest {
         System.out.println("placeLibre");
         int i = 0;
         int j = 0;
-        PlateauJeu instance = null;
-        boolean expResult = false;
+        PlateauJeu instance = new PlateauJeu(1);
+        boolean expResult = true;
         boolean result = instance.placeLibre(i, j);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        expResult=false;
+        i=1;
+        result = instance.placeLibre(i, j);
+        assertEquals(expResult, result);
+        i=0;
+        instance.setposition(0, 0, "Blanc");
+        result = instance.placeLibre(i, j);
+        assertEquals(expResult, result);
+        j=1;
+        instance.setposition(0, 0, "Libre");
+        result = instance.placeLibre(i, j);
+        assertEquals(expResult, result);
     }
 
     /**
      * Test of verifierPriseAux method, of class PlateauJeu.
-     */
+     
     @Test
     public void testVerifierPriseAux() {
         System.out.println("verifierPriseAux");
@@ -145,10 +207,11 @@ public class PlateauJeuTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+*/
     /**
-     * Test of verifierPrise method, of class PlateauJeu.
-     */
+     * Test of verifierPrise method, of class PlateauJeu
+     * Ce test est aussi vérifié par le test Setposition
+     
     @Test
     public void testVerifierPrise() {
         System.out.println("verifierPrise");
@@ -161,10 +224,10 @@ public class PlateauJeuTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+    */
     /**
      * Test of afficher method, of class PlateauJeu.
-     */
+     
     @Test
     public void testAfficher() {
         System.out.println("afficher");
@@ -173,22 +236,28 @@ public class PlateauJeuTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+*/
     /**
      * Test of clear method, of class PlateauJeu.
      */
     @Test
     public void testClear() {
         System.out.println("clear");
-        PlateauJeu instance = null;
+        PlateauJeu instance = new PlateauJeu(2);
+        ArrayList<String> expResult= new ArrayList<String>();
+        instance.setposition(0, 0, "Pris");
+        instance.setposition(1, 1, "Pris");
         instance.clear();
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        for (int k = 0; k < (2 * 2); k++) {
+            expResult.add("Libre");
+        }
+       ArrayList<String> result=instance.getPlateau();
+      assertEquals(expResult, result);
     }
 
     /**
      * Test of partie method, of class PlateauJeu.
-     */
+     Nous ne savons pas comment tester cette methode (l'utilisateur doit intervenir)
     @Test
     public void testPartie() {
         System.out.println("partie");
@@ -197,5 +266,5 @@ public class PlateauJeuTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-    
+ */   
 }
