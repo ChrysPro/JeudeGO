@@ -71,14 +71,6 @@ public class PlateauJeu {
         return plateau;
     }
 
-    /**
-     * Setter Plateau
-     *     
-* @param plateau
-     */
-    public void setPlateau(ArrayList<String> plateau) {
-        this.plateau = plateau;
-    }
 
     /**
      * Permet d'ajouter un pion de couleur couleur à la position (i,j)
