@@ -21,7 +21,7 @@ public class PlateauJeu {
     /**
      *
      */
-    private Scanner S;
+    private Scanner s;
     /**
      *
      */
@@ -36,7 +36,7 @@ public class PlateauJeu {
         this.hauteur = hauteur;
         b = "Blanc";
         n = "Noir ";
-        S = new Scanner(System.in);
+        s = new Scanner(System.in);
         List<String> plat = new ArrayList<String>();
         for (int i = 0; i < (hauteur * hauteur); i++) {
             plat.add("Libre");
@@ -346,8 +346,7 @@ public class PlateauJeu {
                         verifierPriseAux(i - 1, j, couleur);
                     }
                 }
-            } // On verifie la prise au centre du plateau
-            else {
+            } else { // On verifie la prise au centre du plateau
                 if (!(("Libre".equals(plateau.get(i * hauteur + j - 1))) &&!("Pris".equals(plateau.get(i * hauteur + j - 1))) && !("Non Pris".equals(plateau.get(i * hauteur + j - 1))))
                         && !("Libre".equals(plateau.get((i + 1) * hauteur + j)) && !("Pris".equals(plateau.get((i + 1) * hauteur + j))) &&!( "Non Pris".equals(plateau.get((i + 1) * hauteur + j))))
                         && !("Libre".equals(plateau.get((i - 1) * hauteur + j)) && !("Pris".equals(plateau.get((i - 1) * hauteur + j))) && !("Non Pris".equals(plateau.get((i - 1) * hauteur + j))))
@@ -466,24 +465,24 @@ public class PlateauJeu {
             } else if (joueur == 1) {
                 System.out.println("C'est au tour du joueur Noir de jouer");// NOSONAR
                 System.out.println("Que voulez-vous faire ? Jouer(J) ou Passer(p)");// NOSONAR
-                reponse = S.nextLine();
+                reponse = s.nextLine();
                 if ("P".equals(reponse) || "p".equals(reponse)) {
                     joueur = 2;
                     passe = passe + 1;
                 } else {
                     System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
-                    i = S.nextLine();
+                    i = s.nextLine();
                     k = Integer.parseInt(i);
                     System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
-                    j = S.nextLine();
+                    j = s.nextLine();
                     l = Integer.parseInt(j);
                     while (!this.placeLibre(k - 1, l - 1)) {
                         System.out.println("Désolé, la place n'est pas libre");// NOSONAR
                         System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
-                        i = S.nextLine();
+                        i = s.nextLine();
                         k = Integer.parseInt(i);
                         System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
-                        j = S.nextLine();
+                        j = s.nextLine();
                         l = Integer.parseInt(j);
                     }
                     this.clear();
@@ -495,24 +494,24 @@ public class PlateauJeu {
             } else if (joueur == 2) {
                 System.out.println("C'est au tour du joueur Blanc de jouer");// NOSONAR
                 System.out.println("Que voulez-vous faire ? Jouer(J) ou Passer(p)");// NOSONAR
-                reponse = S.nextLine();
+                reponse = s.nextLine();
                 if ("P".equals(reponse) ||"p".equals(reponse)) {
                     joueur = 1;
                     passe = passe + 1;
                 } else {
                     System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
-                    i = S.nextLine();
+                    i = s.nextLine();
                     k = Integer.parseInt(i);
                     System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
-                    j = S.nextLine();
+                    j = s.nextLine();
                     l = Integer.parseInt(j);
                     while (!this.placeLibre(k - 1, l - 1)) {
                         System.out.println("Désolé, la place n'est pas libre");// NOSONAR
                         System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
-                        i = S.nextLine();
+                        i = s.nextLine();
                         k = Integer.parseInt(i);
                         System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
-                        j = S.nextLine();
+                        j = s.nextLine();
                         l = Integer.parseInt(j);
                     }
                     this.clear();
