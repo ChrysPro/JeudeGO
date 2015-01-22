@@ -10,7 +10,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author nbrandt
+ * @author ybellehigue, nbrandt, gguillart, cprocopi
  */
 public class PlateauJeu {
 
@@ -47,7 +47,7 @@ public class PlateauJeu {
     /**
      * Permet d'obtenir la taille du plateau
      *     
-* @return
+* @return la hauteur du plateau
      */
     public int getHauteur() {
         return hauteur;
@@ -56,7 +56,7 @@ public class PlateauJeu {
     /**
      * Retourne la couleur stockée en b
      *
-     * @return
+     * @return la couleur du 2ème joueur (blanc)
      */
     public String getb() {
         return b;
@@ -65,7 +65,7 @@ public class PlateauJeu {
     /**
      * retourne la couleur stockée en n
      *
-     * @return
+     * @return la couleur du 1er joueur (noir)
      */
     public String getn() {
         return n;
@@ -92,7 +92,7 @@ public class PlateauJeu {
     /**
      * Permet d'ajouter un pion de couleur couleur à la position (i,j)
      *     
-* @param i
+     * @param i
      * @param j
      * @param couleur
      */
@@ -123,7 +123,7 @@ public class PlateauJeu {
      *     
 * @param i
      * @param j
-     * @return
+     * @return si la place est libre
      */
     public boolean placeLibre(int i, int j) {
         boolean test = i < this.hauteur && j < this.hauteur && "Libre".equals(this.plateau.get(i * hauteur + j)) && i >= 0 && j >= 0;
@@ -478,6 +478,11 @@ public class PlateauJeu {
         System.out.println("Merci d'avoir joué !");// NOSONAR
     }
 
+    /**
+     * 
+     * @param couleur
+     * @return le nombre de points du joueur 
+     */
     public int points(String couleur) {
         int k = 0;
         for (int i = 0; i < (hauteur * hauteur); i++) {
@@ -488,6 +493,12 @@ public class PlateauJeu {
         return k;
     }
 
+    /**
+     * 
+     * @param joueur
+     * @param passe
+     * @return combien de joueurs ont passé à la suite 
+     */
     public int jouer(int joueur, int passe) {
         String couleur = "";
         String i;
