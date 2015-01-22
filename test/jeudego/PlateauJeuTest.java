@@ -311,4 +311,15 @@ public class PlateauJeuTest {
         assertEquals(expResult2, result2);
         assertEquals(expResult3, result3);
     }
+    /**
+     * Nous ne savons pas comment tester cette méthode (intervention de l'utilisateur)
+     * @param joueur
+     * @param passe
+     * @return 
+     *
+    @Test
+    public int testJouer(int joueur, int passe) {
+        
+    }
+    * */
 }
