@@ -23,17 +23,6 @@
 </fileset>
 </path>
 
-	
- <path id="test.compile.classpath">
-        <path refid="junit.path" />
-        <pathelement path="${build.classes.dir}" />
-    </path>
-    
-    <path id="test.classpath">
-        <path refid="test.compile.classpath" />
-        <pathelement path="${test.classes.dir}" />
-    </path>
-
 <target name="clean">
 <delete dir="${bin.dir}"/>
 <delete dir="${bintest.dir}"/>
@@ -49,6 +38,16 @@
 <javac srcdir="${src.dir}" destdir="${bin.dir}"/>
 <echo message="compilation terminee"/>
 </target>
+
+<path id="test.compile.classpath">
+        <path refid="junit.path" />
+        <pathelement path="${build.classes.dir}" />
+    </path>
+    
+    <path id="test.classpath">
+        <path refid="test.compile.classpath" />
+        <pathelement path="${test.classes.dir}" />
+    </path>
 
 <target name="compile_tests" depends="compile">
 <mkdir dir="${bintest.dir}" />
