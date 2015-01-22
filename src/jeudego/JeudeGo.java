@@ -14,7 +14,8 @@ public class JeudeGo {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-      PlateauJeu plateau= new PlateauJeu(8);
+        int k=8;
+      PlateauJeu plateau= new PlateauJeu(k);
      plateau.partie();
     }
 }
