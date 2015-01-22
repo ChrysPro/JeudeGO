@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Nicolas
+ * @author ybellehigue, nbrandt, gguillart, cprocopi
  */
 public class PlateauJeuTest {
     
