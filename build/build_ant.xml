@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="JeudeGO" default="run" basedir="." >
+
+<property name="src.dir"     value="..\src"/>
+<property name="bin.dir"   value="..\bin"/>
+<property name="bintest.dir"   value="..\bintest"/>
+<property name="jar.dir" value="..\exe"/>
+<property name="build.dir" location="..\build"/>
+<property name="test.dir" value="..\test"/>
+<property name="lib.location" value="C:\ant\apache-ant-1.9.4\lib"/>
+<property name="main-class"  value="jeudego.JeudeGo"/>
+<property name="build.classes.dir" value="${build.dir}\classes" />
+<property name="test.classes.dir" value="${build.dir}\test-classes" />
+<property name="reports.dir" value="..\reports" />
+<property name="reports.data.dir" value="${reports.dir}\xml" />
+<property name="reports.html.dir" value="${reports.dir}\html" />
+<property name="reports.javadoc.dir" value="${reports.dir}\javadoc" />
+<description>Utilisation de ant pour le projet de jeu de go.</description>
+
+<path id="junit.path" >
+<fileset dir ="${lib.location}">
+<include name= "*.jar"/>
+</fileset>
+</path>
+
+	
+ <path id="test.compile.classpath">
+        <path refid="junit.path" />
+        <pathelement path="${build.classes.dir}" />
+    </path>
+    
+    <path id="test.classpath">
+        <path refid="test.compile.classpath" />
+        <pathelement path="${test.classes.dir}" />
+    </path>
+
+<target name="clean">
+<delete dir="${bin.dir}"/>
+<delete dir="${bintest.dir}"/>
+<delete dir="${jar.dir}"/>
+<delete dir="${reports.dir}" />
+<echo message="nettoyage termine"/>
+</target>
+
+<target name="compile" depends="clean">
+<mkdir dir="${build.classes.dir}" />
+<mkdir dir="${test.classes.dir}" />
+<mkdir dir="${bin.dir}"/>
+<javac srcdir="${src.dir}" destdir="${bin.dir}"/>
+<echo message="compilation terminee"/>
+</target>
+
+<target name="compile_tests" depends="compile">
+<mkdir dir="${bintest.dir}" />
+<mkdir dir="${reports.dir}" />
+<mkdir dir="${reports.data.dir}" />
+<mkdir dir="${reports.html.dir}" />
+<mkdir dir="${reports.javadoc.dir}" />
+<javac srcdir="${test.dir}" destdir="${bintest.dir}" debug="on">
+<classpath refid="test.compile.classpath" />
+</javac>
+</target>
+
+<target name="test_unit" depends="compile_tests">
+<junit>
+<classpath>
+<path refid="test.classpath">
+</path>
+</classpath>
+</junit>
+</target>
+
+<target name="run-test" depends="compile_tests" description="Run unit tests">
+        <junit printsummary="yes" haltonfailure="yes" showoutput="yes">
+            <assertions>
+                <enable/>
+            </assertions>         
+            <classpath refid="test.classpath" />
+            <formatter type="plain" />
+            <formatter type="xml" />
+            <batchtest fork="true" todir="${reports.data.dir}" >
+                <fileset dir="${test.classes.dir}" includes="**/*Test.class" />
+            </batchtest>
+        </junit>
+</target>
+
+<target name="test" depends="run-test" description="report">
+		<junitreport todir="${reports.data.dir}">
+            <fileset dir="test/results">
+                <include name="TEST-*.xml" />
+            </fileset>
+            <report format="noframes" todir="${reports.html.dir}" />
+        </junitreport>
+    <javadoc sourcepath="${src.dir}" destdir="${reports.javadoc.dir}"/>
+    </target>
+
+<target name="jar" depends="compile">
+<mkdir dir="${jar.dir}"/>
+	<jar destfile="${jar.dir}/jeudeGo.jar" basedir="${bin.dir}">
+		<manifest>
+			<attribute name="Main-Class" value="${main-class}"/>
+		</manifest>
+	</jar>
+<echo message="Creation du fichier Jar terminee"/>
+</target>
+
+<target name="run" depends="jar">
+<java jar="${jar.dir}/jeudeGo.jar" fork="true"/>
+</target>
+
+</project>
