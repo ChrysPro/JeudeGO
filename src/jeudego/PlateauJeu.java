@@ -473,17 +473,12 @@ public class PlateauJeu {
     public void partie() {
         int joueur = 1;
         int passe = 0;
-        String i;
-        String j;
-        int k;
-        int l;
         while (joueur != 0) {
-            passe=this.jouer(joueur, passe);
-            if (passe==2){
-                joueur=0;
-            }
-            else {
-                joueur=(-1)*joueur+3;
+            passe = this.jouer(joueur, passe);
+            if (passe == 2) {
+                joueur = 0;
+            } else {
+                joueur = (-1) * joueur + 3;
             }
         }
         int p1 = this.points(this.b);
@@ -509,6 +504,7 @@ public class PlateauJeu {
     public int jouer(int joueur, int passe) {
         String couleur = "";
         String i;
+        int newpasse;
         int k;
         String j;
         int l;
@@ -523,7 +519,7 @@ public class PlateauJeu {
         reponse = s.nextLine();
         if ("P".equals(reponse) || "p".equals(reponse)) {
             // Quand joueur est à 2, il passe à 1 et vice-versa
-            passe = passe + 1;
+            newpasse = passe + 1;
         } else {
             System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
             i = s.nextLine();
@@ -542,8 +538,9 @@ public class PlateauJeu {
             }
             this.clear();
             this.setposition(k - 1, l - 1, couleur);
-            passe = 0;
+            newpasse = 0;
             this.afficher();
         }
-    return passe;}
+        return newpasse;
+    }
 }
