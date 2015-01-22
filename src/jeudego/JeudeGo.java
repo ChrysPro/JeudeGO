@@ -6,7 +6,7 @@ package jeudego;
 
 /**
  *
- * @author nbrandt
+ * @author ybellehigue, nbrandt, gguillart, cprocopi
  */
 public class JeudeGo {
 
