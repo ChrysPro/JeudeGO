@@ -175,7 +175,8 @@ public class PlateauJeu {
                             verifierPriseAux(i + 1, j, couleur);
                         }
                     }
-                } else if (j == hauteur - 1) { // On verifie la prise aux coins (2eme coin)
+                } else if (j == hauteur - 1) { 
+// On verifie la prise aux coins (2eme coin)
                     if ((!("Libre".equals(plateau.get(i * hauteur + j - 1))) && !("Pris".equals(plateau.get(i * hauteur + j - 1))) && !("Non Pris".equals(plateau.get(i * hauteur + j - 1))))
                             && (!("Libre".equals(plateau.get((i + 1) * hauteur + j)) && !("Pris".equals(plateau.get((i + 1) * hauteur + j))) && !("Non Pris".equals(plateau.get((i + 1) * hauteur + j)))))) {
                         plateau.set(i * hauteur + j, "En attente");
@@ -251,7 +252,8 @@ public class PlateauJeu {
                             verifierPriseAux(i - 1, j, couleur);
                         }
                     }
-                } else if (j == hauteur - 1) { // On verifie la prise aux coins (4eme coin)
+                } else if (j == hauteur - 1) {
+                    // On verifie la prise aux coins (4eme coin)
                     if ((!("Libre".equals(plateau.get(i * hauteur + j - 1))) && !("Non Pris".equals(plateau.get(i * hauteur + j - 1))))
                             && (!("Libre".equals(plateau.get((i - 1) * hauteur + j))) && !("Non Pris".equals(plateau.get((i - 1) * hauteur + j))))) {
                         plateau.set(i * hauteur + j, "En attente");
@@ -361,7 +363,8 @@ public class PlateauJeu {
                         verifierPriseAux(i - 1, j, couleur);
                     }
                 }
-            } else { // On verifie la prise au centre du plateau
+            } else { 
+                // On verifie la prise au centre du plateau
                 if (!(("Libre".equals(plateau.get(i * hauteur + j - 1))) &&!("Pris".equals(plateau.get(i * hauteur + j - 1))) && !("Non Pris".equals(plateau.get(i * hauteur + j - 1))))
                         && !("Libre".equals(plateau.get((i + 1) * hauteur + j)) && !("Pris".equals(plateau.get((i + 1) * hauteur + j))) &&!( "Non Pris".equals(plateau.get((i + 1) * hauteur + j))))
                         && !("Libre".equals(plateau.get((i - 1) * hauteur + j)) && !("Pris".equals(plateau.get((i - 1) * hauteur + j))) && !("Non Pris".equals(plateau.get((i - 1) * hauteur + j))))
@@ -537,9 +540,9 @@ public class PlateauJeu {
                 }
             }
         }
-        int P1=this.Points(this.b);
-        int P2=this.Points(this.n);
-        if (P1>=P2) {
+        int p1=this.points(this.b);
+        int p2=this.points(this.n);
+        if (p1>=p2) {
             System.out.println("Le joueur blanc a gagné");
         }
         else {
@@ -548,7 +551,7 @@ public class PlateauJeu {
         System.out.println("Merci d'avoir joué !");// NOSONAR
     }
     
- public int Points (String couleur){
+ public int points (String couleur){
      int k=0;
      for (int i = 0; i < (hauteur * hauteur); i++) {
             if (couleur.equals(this.plateau.get(i))){
