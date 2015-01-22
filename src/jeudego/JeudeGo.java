@@ -11,11 +11,19 @@ package jeudego;
 public class JeudeGo {
 
     /**
+     *Taille du plateau
+     */
+    public static final int TAILLE=8;
+    
+    private JeudeGo() {
+
+    }
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        int k=8;
-      PlateauJeu plateau= new PlateauJeu(k);
-     plateau.partie();
+        PlateauJeu plateau = new PlateauJeu(TAILLE);
+        plateau.partie();
     }
 }
