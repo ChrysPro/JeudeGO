@@ -14,7 +14,7 @@
 <property name="reports.dir" value="..\reports" />
 <property name="reports.data.dir" value="${reports.dir}\xml" />
 <property name="reports.html.dir" value="${reports.dir}\html" />
-<property name="reports.javadoc" value="${reports.dir}\javadoc" />
+<property name="reports.javadoc.dir" value="${reports.dir}\javadoc" />
 <description>Utilisation de ant pour le projet de jeu de go.</description>
 
 <path id="junit.path" >
@@ -55,6 +55,7 @@
 <mkdir dir="${reports.dir}" />
 <mkdir dir="${reports.data.dir}" />
 <mkdir dir="${reports.html.dir}" />
+<mkdir dir="${reports.javadoc.dir}" />
 <javac srcdir="${test.dir}" destdir="${bintest.dir}" debug="on">
 <classpath refid="test.compile.classpath" />
 </javac>
@@ -90,6 +91,7 @@
             </fileset>
             <report format="noframes" todir="${reports.html.dir}" />
         </junitreport>
+    <javadoc sourcepath="${src.dir}" destdir="${reports.javadoc.dir}"/>
     </target>
 
 <target name="jar" depends="compile">
