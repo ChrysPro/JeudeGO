@@ -55,19 +55,22 @@ public class PlateauJeu {
 
     /**
      * Retourne la couleur stockée en b
-     * @return 
+     *
+     * @return
      */
     public String getb() {
         return b;
     }
-    
+
     /**
      * retourne la couleur stockée en n
-     * @return 
+     *
+     * @return
      */
     public String getn() {
         return n;
     }
+
     /**
      * Permet de modifier la taille du plateau
      *     
@@ -85,7 +88,6 @@ public class PlateauJeu {
     public List<String> getPlateau() {
         return plateau;
     }
-
 
     /**
      * Permet d'ajouter un pion de couleur couleur à la position (i,j)
@@ -111,7 +113,7 @@ public class PlateauJeu {
             }
         }
         if (couleur.equals(n)) {
-             if (i != 0) {
+            if (i != 0) {
                 this.verifierPrise(this.plateau, i - 1, j, b);
             }
             if (i != hauteur - 1) {
@@ -142,8 +144,9 @@ public class PlateauJeu {
     }
 
     /**
-     * Vérifie si un groupe de pion de couleur couleur est entouré
-     * Empeche de jouer à une position qui vient d'être prise -> Pris
+     * Vérifie si un groupe de pion de couleur couleur est entouré Empeche de
+     * jouer à une position qui vient d'être prise -> Pris
+     *
      * @param plateau
      * @param i
      * @param j
@@ -175,7 +178,7 @@ public class PlateauJeu {
                             verifierPriseAux(i + 1, j, couleur);
                         }
                     }
-                } else if (j == hauteur - 1) { 
+                } else if (j == hauteur - 1) {
 // On verifie la prise aux coins (2eme coin)
                     if ((!("Libre".equals(plateau.get(i * hauteur + j - 1))) && !("Pris".equals(plateau.get(i * hauteur + j - 1))) && !("Non Pris".equals(plateau.get(i * hauteur + j - 1))))
                             && (!("Libre".equals(plateau.get((i + 1) * hauteur + j)) && !("Pris".equals(plateau.get((i + 1) * hauteur + j))) && !("Non Pris".equals(plateau.get((i + 1) * hauteur + j)))))) {
@@ -363,10 +366,10 @@ public class PlateauJeu {
                         verifierPriseAux(i - 1, j, couleur);
                     }
                 }
-            } else { 
+            } else {
                 // On verifie la prise au centre du plateau
-                if (!(("Libre".equals(plateau.get(i * hauteur + j - 1))) &&!("Pris".equals(plateau.get(i * hauteur + j - 1))) && !("Non Pris".equals(plateau.get(i * hauteur + j - 1))))
-                        && !("Libre".equals(plateau.get((i + 1) * hauteur + j)) && !("Pris".equals(plateau.get((i + 1) * hauteur + j))) &&!( "Non Pris".equals(plateau.get((i + 1) * hauteur + j))))
+                if (!(("Libre".equals(plateau.get(i * hauteur + j - 1))) && !("Pris".equals(plateau.get(i * hauteur + j - 1))) && !("Non Pris".equals(plateau.get(i * hauteur + j - 1))))
+                        && !("Libre".equals(plateau.get((i + 1) * hauteur + j)) && !("Pris".equals(plateau.get((i + 1) * hauteur + j))) && !("Non Pris".equals(plateau.get((i + 1) * hauteur + j))))
                         && !("Libre".equals(plateau.get((i - 1) * hauteur + j)) && !("Pris".equals(plateau.get((i - 1) * hauteur + j))) && !("Non Pris".equals(plateau.get((i - 1) * hauteur + j))))
                         && !("Libre".equals(plateau.get(i * hauteur + j + 1)) && !("Pris".equals(plateau.get(i * hauteur + j + 1))) && !("Non Pris".equals(plateau.get(i * hauteur + j + 1))))) {
                     plateau.set(i * hauteur + j, "En attente");
@@ -384,8 +387,8 @@ public class PlateauJeu {
                     }
                 }
                 if ("Libre".equals(plateau.get(i * hauteur + j - 1)) || "Libre".equals(plateau.get((i + 1) * hauteur + j))
-                        ||"Non Pris".equals(plateau.get(i * hauteur + j - 1)) || "Non Pris".equals(plateau.get((i + 1) * hauteur + j))
-                        ||"Libre".equals( plateau.get((i - 1) * hauteur + j)) || "Non Pris".equals(plateau.get((i - 1) * hauteur + j))
+                        || "Non Pris".equals(plateau.get(i * hauteur + j - 1)) || "Non Pris".equals(plateau.get((i + 1) * hauteur + j))
+                        || "Libre".equals(plateau.get((i - 1) * hauteur + j)) || "Non Pris".equals(plateau.get((i - 1) * hauteur + j))
                         || "Libre".equals(plateau.get(i * hauteur + j + 1)) || "Non Pris".equals(plateau.get(i * hauteur + j + 1))) {
                     plateau.set(i * hauteur + j, "Non Pris");
                     if ("En attente".equals(plateau.get(i * hauteur + j - 1))) {
@@ -416,7 +419,7 @@ public class PlateauJeu {
     public void verifierPrise(List<String> plateau, int i, int j, String couleur) {
         this.verifierPriseAux(i, j, couleur);
         for (int k = 0; k < plateau.size(); k++) {
-            
+
             if ("En attente".equals(plateau.get(k))) {
                 plateau.set(k, "Pris");
             }
@@ -425,8 +428,6 @@ public class PlateauJeu {
             }
         }
     }
-    
-    
 
     /**
      * Affichage en mode texte
@@ -453,22 +454,22 @@ public class PlateauJeu {
         }
         System.out.println(aff);// NOSONAR
     }
-/**
- * Redéfinit les cases prises en cases libres
- */
+
+    /**
+     * Redéfinit les cases prises en cases libres
+     */
     public void clear() {
-         for (int k = 0; k < plateau.size(); k++) {
-            
+        for (int k = 0; k < plateau.size(); k++) {
+
             if ("Pris".equals(plateau.get(k))) {
                 plateau.set(k, "Libre");
             }
         }
     }
-    
-    /**
-     *Méthode pour jouer à 2 joueurs
-     */
 
+    /**
+     * Méthode pour jouer à 2 joueurs
+     */
     public void partie() {
         int joueur = 1;
         int passe = 0;
@@ -477,86 +478,72 @@ public class PlateauJeu {
         int k;
         int l;
         while (joueur != 0) {
-            if (passe == 2) {
-                joueur = 0;
-            } else if (joueur == 1) {
-                System.out.println("C'est au tour du joueur Noir de jouer");// NOSONAR
-                System.out.println("Que voulez-vous faire ? Jouer(J) ou Passer(p)");// NOSONAR
-                reponse = s.nextLine();
-                if ("P".equals(reponse) || "p".equals(reponse)) {
-                    joueur = 2;
-                    passe = passe + 1;
-                } else {
-                    System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
-                    i = s.nextLine();
-                    k = Integer.parseInt(i);
-                    System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
-                    j = s.nextLine();
-                    l = Integer.parseInt(j);
-                    while (!this.placeLibre(k - 1, l - 1)) {
-                        System.out.println("Désolé, la place n'est pas libre");// NOSONAR
-                        System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
-                        i = s.nextLine();
-                        k = Integer.parseInt(i);
-                        System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
-                        j = s.nextLine();
-                        l = Integer.parseInt(j);
-                    }
-                    this.clear();
-                    this.setposition(k - 1, l - 1, n);
-                    joueur = 2;
-                    passe = 0;
-                    this.afficher();
-                }
-            } else if (joueur == 2) {
-                System.out.println("C'est au tour du joueur Blanc de jouer");// NOSONAR
-                System.out.println("Que voulez-vous faire ? Jouer(J) ou Passer(p)");// NOSONAR
-                reponse = s.nextLine();
-                if ("P".equals(reponse) ||"p".equals(reponse)) {
-                    joueur = 1;
-                    passe = passe + 1;
-                } else {
-                    System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
-                    i = s.nextLine();
-                    k = Integer.parseInt(i);
-                    System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
-                    j = s.nextLine();
-                    l = Integer.parseInt(j);
-                    while (!this.placeLibre(k - 1, l - 1)) {
-                        System.out.println("Désolé, la place n'est pas libre");// NOSONAR
-                        System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
-                        i = s.nextLine();
-                        k = Integer.parseInt(i);
-                        System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
-                        j = s.nextLine();
-                        l = Integer.parseInt(j);
-                    }
-                    this.clear();
-                    this.setposition(k - 1, l - 1, b);
-                    joueur = 1;
-                    passe = 0;
-                    this.afficher();
-                }
+            passe=this.jouer(joueur, passe);
+            if (passe==2){
+                joueur=0;
+            }
+            else {
+                joueur=(-1)*joueur+3;
             }
         }
-        int p1=this.points(this.b);
-        int p2=this.points(this.n);
-        if (p1>=p2) {
+        int p1 = this.points(this.b);
+        int p2 = this.points(this.n);
+        if (p1 >= p2) {
             System.out.println("Le joueur blanc a gagné"); //NOSONAR
-        }
-        else {
+        } else {
             System.out.println("Le joueur noir a gagné"); //NOSONAR
         }
         System.out.println("Merci d'avoir joué !");// NOSONAR
     }
-    
- public int points (String couleur){
-     int k=0;
-     for (int i = 0; i < (hauteur * hauteur); i++) {
-            if (couleur.equals(this.plateau.get(i))){
-                k=k+1;
+
+    public int points(String couleur) {
+        int k = 0;
+        for (int i = 0; i < (hauteur * hauteur); i++) {
+            if (couleur.equals(this.plateau.get(i))) {
+                k = k + 1;
             }
         }
-     return k;
- }
+        return k;
+    }
+
+    public int jouer(int joueur, int passe) {
+        String couleur = "";
+        String i;
+        int k;
+        String j;
+        int l;
+        if (joueur == 1) {
+            System.out.println("C'est au tour du joueur Noir de jouer");// NOSONAR
+            couleur = this.getn();
+        } else if (joueur == 2) {
+            System.out.println("C'est au tour du joueur Blanc de jouer");// NOSONAR
+            couleur = this.getb();
+        }
+        System.out.println("Que voulez-vous faire ? Jouer(J) ou Passer(p)");// NOSONAR
+        reponse = s.nextLine();
+        if ("P".equals(reponse) || "p".equals(reponse)) {
+            // Quand joueur est à 2, il passe à 1 et vice-versa
+            passe = passe + 1;
+        } else {
+            System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
+            i = s.nextLine();
+            k = Integer.parseInt(i);
+            System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
+            j = s.nextLine();
+            l = Integer.parseInt(j);
+            while (!this.placeLibre(k - 1, l - 1)) {
+                System.out.println("Désolé, la place n'est pas libre");// NOSONAR
+                System.out.println("Ou voulez-vous jouer ? (position en i entre 1 et " + this.hauteur + "):");// NOSONAR
+                i = s.nextLine();
+                k = Integer.parseInt(i);
+                System.out.println("Ou voulez-vous jouer ? (position en j entre 1 et " + this.hauteur + "):");// NOSONAR
+                j = s.nextLine();
+                l = Integer.parseInt(j);
+            }
+            this.clear();
+            this.setposition(k - 1, l - 1, couleur);
+            passe = 0;
+            this.afficher();
+        }
+    return passe;}
 }
