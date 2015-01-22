@@ -54,6 +54,21 @@ public class PlateauJeu {
     }
 
     /**
+     * Retourne la couleur stockée en b
+     * @return 
+     */
+    public String getb() {
+        return b;
+    }
+    
+    /**
+     * retourne la couleur stockée en n
+     * @return 
+     */
+    public String getn() {
+        return n;
+    }
+    /**
      * Permet de modifier la taille du plateau
      *     
 * @param hauteur
@@ -524,4 +539,14 @@ public class PlateauJeu {
         }
         System.out.println("Merci d'avoir joué !");// NOSONAR
     }
+    
+ public int Points (String couleur){
+     int k=0;
+     for (int i = 0; i < (hauteur * hauteur); i++) {
+            if (couleur.equals(this.plateau.get(i))){
+                k=k+1;
+            }
+        }
+     return k;
+ }
 }
