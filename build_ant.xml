@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="JeudeGO" default="run" basedir="." >
 
-<property name="src.dir"     value="C:\Users\Nicolas\Documents\NetBeansProjects\JeudeGO\src"/>
-<property name="bin.dir"   value="C:\Users\Nicolas\Documents\NetBeansProjects\JeudeGO\bin"/>
-<property name="jar.dir" value="C:\Users\Nicolas\Documents\NetBeansProjects\JeudeGO\exe"/>
-<property name="test.dir" value="C:\Users\Nicolas\Documents\NetBeansProjects\JeudeGO\test"/>
+<property name="src.dir"     value="..\src"/>
+<property name="bin.dir"   value="..\bin"/>
+<property name="jar.dir" value="..\exe"/>
+<property name="test.dir" value="..\test"/>
 <property name="main-class"  value="jeudego.JeudeGo"/>
 <description>Utilisation de ant pour le projet de jeu de go.</description>
 
