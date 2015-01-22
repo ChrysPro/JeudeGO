@@ -537,6 +537,14 @@ public class PlateauJeu {
                 }
             }
         }
+        int P1=this.Points(this.b);
+        int P2=this.Points(this.n);
+        if (P1>=P2) {
+            System.out.println("Le joueur blanc a gagné");
+        }
+        else {
+            System.out.println("Le joueur noir a gagné");
+        }
         System.out.println("Merci d'avoir joué !");// NOSONAR
     }
     
