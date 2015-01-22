@@ -6,6 +6,7 @@
 package jeudego;
 
 import java.util.ArrayList;
+import java.util.List;
 import junit.framework.Assert;
 import org.junit.After;
 import org.junit.AfterClass;
@@ -70,12 +71,36 @@ public class PlateauJeuTest {
     public void testGetPlateau() {
         System.out.println("getPlateau");
         PlateauJeu instance = new PlateauJeu(5);
-        ArrayList<String> expResult = new ArrayList<String>();
+        List<String> expResult = new ArrayList<String>();
         for (int i = 0; i < (5 * 5); i++) {
             expResult.add("Libre");
         }
-        ArrayList<String> result = instance.getPlateau();
+        List<String> result = instance.getPlateau();
         assertEquals(expResult, result);
+    }
+    
+    /**
+     * Test of getn method, of class PlateauJeu.
+     */
+    @Test
+    public void testGetn() {
+        System.out.println("getn");
+        PlateauJeu instance=new PlateauJeu(1);
+        String expResult = "Noir ";
+        String result=instance.getn();
+        Assert.assertTrue("Error", expResult.equals(result));
+    }
+    
+    /**
+     * Test of getb method, of class PlateauJeu.
+     */
+    @Test
+    public void testGetb() {
+        System.out.println("getb");
+        PlateauJeu instance=new PlateauJeu(1);
+        String expResult = "Blanc";
+        String result=instance.getb();
+        Assert.assertTrue("Error", expResult.equals(result));
     }
 
     /**
@@ -88,7 +113,7 @@ public class PlateauJeuTest {
         int j = 0;
         String couleur = "";
         PlateauJeu instance = new PlateauJeu(10);
-        ArrayList<String> expResult= new ArrayList<String>();
+        List<String> expResult= new ArrayList<String>();
         for (int k = 0; k < (10 * 10); k++) {
             expResult.add("Libre");
         }
@@ -244,14 +269,14 @@ public class PlateauJeuTest {
     public void testClear() {
         System.out.println("clear");
         PlateauJeu instance = new PlateauJeu(2);
-        ArrayList<String> expResult= new ArrayList<String>();
+        List<String> expResult= new ArrayList<String>();
         instance.setposition(0, 0, "Pris");
         instance.setposition(1, 1, "Pris");
         instance.clear();
         for (int k = 0; k < (2 * 2); k++) {
             expResult.add("Libre");
         }
-       ArrayList<String> result=instance.getPlateau();
+       List<String> result=instance.getPlateau();
       assertEquals(expResult, result);
     }
 
@@ -267,4 +292,23 @@ public class PlateauJeuTest {
         fail("The test case is a prototype.");
     }
  */   
+    @Test
+    public void testPoints() {
+        System.out.println("Points");
+        PlateauJeu instance = new PlateauJeu(3);
+        instance.setposition(0, 1, instance.getn());
+        instance.setposition(2, 2, instance.getn());
+        int result1=instance.Points(instance.getn());
+        int expResult1=2;
+        int result2=instance.Points(instance.getb());
+        int expResult2=0;
+        instance.setposition(0, 0, instance.getb());
+        instance.setposition(1, 1, instance.getb());
+        instance.setposition(1, 0, instance.getb());
+        int result3=instance.Points(instance.getb());
+        int expResult3=3;
+        assertEquals(expResult1, result1);
+        assertEquals(expResult2, result2);
+        assertEquals(expResult3, result3);
+    }
 }
