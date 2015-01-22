@@ -98,34 +98,25 @@ public class PlateauJeu {
      */
     public void setposition(int i, int j, String couleur) {
         this.plateau.set(i * hauteur + j, couleur);
+        String couleurennemi=""; 
         if (couleur.equals(b)) {
+            couleurennemi=n;
+        } 
+        else if (couleur.equals(n)){
+            couleurennemi=b;
+        }
             if (i != 0) {
-                this.verifierPrise(this.plateau, i - 1, j, n);
+                this.verifierPrise(this.plateau, i - 1, j, couleurennemi);
             }
             if (i != hauteur - 1) {
-                this.verifierPrise(this.plateau, i + 1, j, n);
+                this.verifierPrise(this.plateau, i + 1, j, couleurennemi);
             }
             if (j != 0) {
-                this.verifierPrise(this.plateau, i, j - 1, n);
+                this.verifierPrise(this.plateau, i, j - 1, couleurennemi);
             }
             if (j != hauteur - 1) {
-                this.verifierPrise(this.plateau, i, j + 1, n);
+                this.verifierPrise(this.plateau, i, j + 1, couleurennemi);
             }
-        }
-        if (couleur.equals(n)) {
-            if (i != 0) {
-                this.verifierPrise(this.plateau, i - 1, j, b);
-            }
-            if (i != hauteur - 1) {
-                this.verifierPrise(this.plateau, i + 1, j, b);
-            }
-            if (j != 0) {
-                this.verifierPrise(this.plateau, i, j - 1, b);
-            }
-            if (j != hauteur - 1) {
-                this.verifierPrise(this.plateau, i, j + 1, b);
-            }
-        }
     }
 
     /**
@@ -136,12 +127,9 @@ public class PlateauJeu {
      * @return
      */
     public boolean placeLibre(int i, int j) {
-        if (i < this.hauteur && j < this.hauteur && "Libre".equals(this.plateau.get(i * hauteur + j)) && i >= 0 && j >= 0) {
-            return true;
-        } else {
-            return false;
+        boolean test = i < this.hauteur && j < this.hauteur && "Libre".equals(this.plateau.get(i * hauteur + j)) && i >= 0 && j >= 0;
+        return test;
         }
-    }
 
     /**
      * Vérifie si un groupe de pion de couleur couleur est entouré Empeche de
