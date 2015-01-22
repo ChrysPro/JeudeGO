@@ -298,14 +298,14 @@ public class PlateauJeuTest {
         PlateauJeu instance = new PlateauJeu(3);
         instance.setposition(0, 1, instance.getn());
         instance.setposition(2, 2, instance.getn());
-        int result1=instance.Points(instance.getn());
+        int result1=instance.points(instance.getn());
         int expResult1=2;
-        int result2=instance.Points(instance.getb());
+        int result2=instance.points(instance.getb());
         int expResult2=0;
         instance.setposition(0, 0, instance.getb());
         instance.setposition(1, 1, instance.getb());
         instance.setposition(1, 0, instance.getb());
-        int result3=instance.Points(instance.getb());
+        int result3=instance.points(instance.getb());
         int expResult3=3;
         assertEquals(expResult1, result1);
         assertEquals(expResult2, result2);
