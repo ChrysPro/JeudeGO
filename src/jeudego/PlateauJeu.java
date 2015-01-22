@@ -434,25 +434,24 @@ public class PlateauJeu {
 */
     public void afficher() {
         int a = plateau.size();
-        String b = "";
+        String aff = "";
         for (int i = 0; i < this.hauteur; i++) {
-            b = b + " _";
+            aff = aff + " _";
         }
-        System.out.println(b);// NOSONAR
-        b = "";
+        System.out.println(aff);// NOSONAR
+        aff = "";
         for (int j = 0; j < a; j++) {
-            b = b + "|" + plateau.get(j);
+            aff = aff + "|" + plateau.get(j);
             if (j % this.hauteur == this.hauteur - 1) {
-                b = b + "|";
-                System.out.println(b);// NOSONAR
-                b = "";
+                aff = aff + "|";
+                System.out.println(aff);// NOSONAR
+                aff = "";
             }
         }
         for (int i = 0; i < this.hauteur; i++) {
-            b = b + " _";
+            aff = aff + " _";
         }
-        System.out.println(b);// NOSONAR
-        b = "";
+        System.out.println(aff);// NOSONAR
     }
 /**
  * Redéfinit les cases prises en cases libres
@@ -543,10 +542,10 @@ public class PlateauJeu {
         int p1=this.points(this.b);
         int p2=this.points(this.n);
         if (p1>=p2) {
-            System.out.println("Le joueur blanc a gagné");
+            System.out.println("Le joueur blanc a gagné"); //NOSONAR
         }
         else {
-            System.out.println("Le joueur noir a gagné");
+            System.out.println("Le joueur noir a gagné"); //NOSONAR
         }
         System.out.println("Merci d'avoir joué !");// NOSONAR
     }
